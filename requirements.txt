@@ -1,0 +1,9 @@
+python-telegram-bot>=20.3
+sentence-transformers>=2.2.2
+openai>=1.0.0
+numpy>=1.23
+tqdm
+groq
+pypdf>=3.0.0
+python-dotenv
+# sqlite3   # builtin (do not pip install)
