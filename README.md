@@ -1,6 +1,8 @@
 Mini-RAG Telegram Bot
 =====================
 
+https://github.com/user-attachments/assets/c3837b32-f932-4b05-935c-26a770aaa2df
+
 Overview
 --------
 Lightweight Telegram bot that answers questions using a small local knowledge base we provide.
