@@ -25,13 +25,18 @@ Quick start
 2. Put your .md or .pdf or .txt files into example_docs/ folder
 
 3. Set environment variables:
+
    Create .env and set below variable
+   ```bash
    - TELEGRAM_TOKEN="your_telegram_bot_token"
    - GROQ_API_KEY="your_GROQ_key"
    - ADMIN_USER_ID = "your telegram user id"
+   ```
 
 4. Run:
+   ```bash
    python app.py
+   ```
 
 5. In Telegram:
    use commands,
