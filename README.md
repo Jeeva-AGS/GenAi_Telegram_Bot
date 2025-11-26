@@ -15,9 +15,12 @@ Features:
 Quick start
 -----------
 1. Create a venv and install:
+   ```bash
    python -m venv venv
    source venv/bin/activate
+
    pip install -r requirements.txt
+   ```
 
 2. Put your .md or .pdf or .txt files into example_docs/ folder
 
@@ -40,6 +43,7 @@ Quick start
 
 Project Structure
 -------
+```bash
 Rag/
 │
 ├── app.py
@@ -53,6 +57,7 @@ Rag/
 │     └── doc4.pdf
 │
 └── mini_rag.db          # Auto-created SQLite DB
+```
 
 
 # How to Get Required Keys
