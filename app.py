@@ -43,6 +43,7 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/summarize    :: summarize your last 3 messages\n"
         "/myid         :: to get your telegram user id\n"
         "/help         :: this message\n\n"
+        "for generating description for image just upload the image (our bot will auto detect it \n\n)"
         "/index        :: (admin only) if your getting No documents indexed, run this command - [ before that , check if there is files in this folder (example_docs/) ]\n"
     )
 
