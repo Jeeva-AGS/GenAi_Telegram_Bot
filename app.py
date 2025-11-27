@@ -9,6 +9,8 @@ from typing import List
 from dotenv import load_dotenv
 load_dotenv()
 
+from vision import describe_image
+
 # config env
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 ADMIN_USER_ID = os.getenv("ADMIN_USER_ID")
@@ -95,6 +97,22 @@ async def show_id(update, context):
     user_id = update.message.from_user.id
     await update.message.reply_text(f"Your Telegram User ID is: {user_id} \n dont share it with anyone or they will use me as a puppet :(")
 
+async def handle_image(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    photo = update.message.photo[-1]
+    file_id = photo.file_id
+    tg_file = await context.bot.get_file(file_id)
+
+    save_path = f"temp_{file_id}.jpg"
+    await tg_file.download_to_path(save_path)
+
+    caption , tags = describe_image(save_path)
+
+    reply = f"\t IMAGE DESCRIPTION \n\n"\
+            f"{caption}\n\n"\
+            f"**Tags** : {', '.join(tags)}"
+    
+    await update.message.reply_markdown(reply)
+
 
 def main():
     if not TELEGRAM_TOKEN:
@@ -105,6 +123,7 @@ def main():
     app.add_handler(CommandHandler("ask", ask_cmd))
     app.add_handler(CommandHandler("summarize", summarize_cmd))
     app.add_handler(CommandHandler("myid", show_id))
+    app.app_handler(MessageHandler(filters.PHOTO), handle_image)
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), text_handler))
 
     print("Starting Mini-RAG bot...")

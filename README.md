@@ -104,3 +104,21 @@ Rag/
 4. Add it to your .env file:
    ADMIN_USER_ID=your_user_id_here
 
+
+IMAGE Captioning
+=====================
+
+added image captioning , so whenever we add image in telegram bot it detects it automatically and generates cation using a local open-source vision model
+
+## how it works
+
+1. we send a image on telegram
+2. bot download it temporarily
+3. BLIP generates a caption 
+4. we extrcact tags from that caption 
+5. bot replies with caption + tags
+
+# requirments
+```bash
+   pip install transformers pillow torch torchvision
+   ```
