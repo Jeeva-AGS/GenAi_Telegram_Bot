@@ -43,7 +43,8 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "/summarize    :: summarize your last 3 messages\n"
         "/myid         :: to get your telegram user id\n"
         "/help         :: this message\n\n"
-        "for generating description for image just upload the image (our bot will auto detect it \n\n)"
+        "for generating description for image just upload the image (our bot will auto detect it) \n\n"
+
         "/index        :: (admin only) if your getting No documents indexed, run this command - [ before that , check if there is files in this folder (example_docs/) ]\n"
     )
 
@@ -104,7 +105,8 @@ async def handle_image(update: Update, context: ContextTypes.DEFAULT_TYPE):
     tg_file = await context.bot.get_file(file_id)
 
     save_path = f"temp_{file_id}.jpg"
-    await tg_file.download_to_path(save_path)
+    await tg_file.download_to_drive(save_path)
+    await update.message.chat.send_action(action="typing")
 
     caption , tags = describe_image(save_path)
 
@@ -124,7 +126,7 @@ def main():
     app.add_handler(CommandHandler("ask", ask_cmd))
     app.add_handler(CommandHandler("summarize", summarize_cmd))
     app.add_handler(CommandHandler("myid", show_id))
-    app.app_handler(MessageHandler(filters.PHOTO), handle_image)
+    app.add_handler(MessageHandler(filters.PHOTO,handle_image))
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), text_handler))
 
     print("Starting Mini-RAG bot...")

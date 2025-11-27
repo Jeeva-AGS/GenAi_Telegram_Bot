@@ -1,7 +1,8 @@
-python-telegram-bot>=20.3
+python-telegram-bot>=20.6
 sentence-transformers>=2.2.2
 openai>=1.0.0
 numpy>=1.23
+# telegram
 tqdm
 groq
 pypdf>=3.0.0

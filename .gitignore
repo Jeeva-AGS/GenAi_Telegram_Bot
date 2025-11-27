@@ -1,4 +1,5 @@
 __pycache__/
-avivo/
+telegram_bot/
 .env
 *.pyc
+mini_rag.db
